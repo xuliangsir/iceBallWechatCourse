@@ -1,0 +1,77 @@
+{
+  "name": "hockey-hall-course",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bin/www",
+  "directories": {
+  },
+  "scripts": {
+    "start": "bin/www",
+    "test": "mocha test --recursive"
+  },
+  "programFiles": [
+    "bin/**/*",
+    "component/**/*.js",
+    "config/**/*.js",
+    "constant/**/*.js",
+    "controller/**/*.js",
+    "feature/**/*.js",
+    "helper/**/*.js",
+    "model/**/*.js",
+    "test/**/*.js",
+    "util/**/*.js",
+    "*.js"
+  ],
+  "includePaths": [
+    "./",
+    "node_modules/component-*/lib/"
+  ],
+  "author": "draba1986",
+  "contributors": [],
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "1.x",
+    "componet-app-error": "git+ssh://git@git.oschina.net:DrabaFramework/component-app-error.git#v1.0.0",
+    "componet-logger": "git+ssh://git@git.oschina.net:DrabaFramework/component-logger.git#v1.0.0",
+    "cookie-parser": "1.x",
+    "express": "4.x",
+    "express-winston": "1.x",
+    "glob-all": "3.x",
+    "injector": "git+ssh://git@git.oschina.net:DrabaFramework/injector.git#v1.0.0",
+    "joi": "8.x",
+    "lodash": "4.x",
+    "normalize-path": "2.x",
+    "q": "1.x",
+    "request": "2.x"
+  },
+  "devDependencies": {
+    "chai": "3.5.0",
+    "mocha": "2.5.1",
+    "sinon": "1.17.4",
+    "chalk": "1.1.3",
+    "sinon-chai": "2.8.0",
+    "supertest": "1.2.0"
+  },
+  "jshintConfig": {
+    "curly": true,
+    "eqeqeq": true,
+    "esversion": 5,
+    "freeze": true,
+    "true": true,
+    "noarg": true,
+    "undef": true,
+    "unused": true,
+    "maxparams": 5,
+    "maxdepth": 10,
+    "maxcomplexity": 100,
+    "funcscope": false,
+    "globals": [],
+    "maxstatements": 100,
+    "nocomma": true,
+    "nonew": true,
+    "notypeof": true,
+    "shadow": true,
+    "module": true,
+    "node": true
+  }
+}

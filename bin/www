@@ -1,0 +1,41 @@
+#!/usr/bin/env node
+'use strict';
+var http = require('http');
+var Q = require('q');
+var Injector = require('injector');
+
+var pathResolver = require('../path_resolver');
+
+var injector = new Injector(pathResolver.includePaths);
+injector.inject(Injector.define([
+    'app',
+    'component/logger',
+    'config/server'
+], function (app,
+             logger,
+             serverConfig) {
+    var defer = Q.defer();
+    var server = http.createServer(app);
+    server.listen(serverConfig.http.port, serverConfig.http.host, function () {
+        logger.server.info('Listening on ' + serverConfig.http.host + ':' + serverConfig.http.port, {
+            data: {
+                host: serverConfig.http.host,
+                port: serverConfig.http.port
+            }
+        });
+    });
+    server.on('error', function (error) {
+        logger.server.fatal(error.message, {
+            data: {
+                name: error.name,
+                message: error.message,
+                stack: error.stack
+            }
+        });
+        defer.reject(error);
+    });
+    return defer.promise;
+})).catch(function (err) {
+    console.error(err.stack || err);
+    process.exit(1);
+});
